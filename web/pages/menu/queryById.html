@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <base href="http://localhost:8080/shizuo/">
+    <link type="text/css" rel="stylesheet" href="static/css/style.css" >
+    <style type="text/css">
+        #btnSubmit{
+            color: red;
+        }
+        .tb{
+            width:130px;
+            height: 40px;
+            margin-top: 120px;
+        }
+        .wel_word{
+            font-size: 30px;
+            float: left;
+            margin-top: 30px;
+        }
+        #main table{
+            margin: auto;
+            margin-top: 1px;
+            border-collapse: collapse;
+        }
+        #btnQuery{
+            width:180px;
+            height: 40px;
+            margin-top: 10px;
+        }
+        #function {
+            color: blue;
+        }
+        body {
+            overflow: hidden;
+            background-image: url("static/img/back.png");
+        }
+    </style>
+    <script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+        $(function(){
+        $("#btnSubmit").click(function() {
+            //https://blog.csdn.net/u014175572/article/details/51135053
+            //如果有空串，就弹出警告
+            var cnt = 0;
+            var str = "";
+            var code = $(":text").each(function (){
+                if($(this).val()==""||$(this)==null){
+                    cnt++;
+                    str += "?"+$(this).attr("name")+"不能为空！\r\n";
+                }
+            });
+            // alert(cnt)
+            if(cnt>0){
+                alert(str);
+                return false;
+            }
+        });
+    });
+    </script>
+</head>
+<body>
+<div id="header">
+    <img class="logo_img" alt="" src="static/img/logo2.png" >
+    <span class="wel_word">学生成绩管理系统</span>
+    <div>
+        <a href="index.html">返回主菜单</a>
+        <!--        <a href="pages/user/regist.html">注册</a> &nbsp;&nbsp;-->
+        <!--				<a href="pages/cart/cart.html">购物车</a>-->
+        <!--				<a href="pages/manager/manager.html">后台管理</a>-->
+    </div>
+</div>
+<div id="main">
+    当前页面：<span id="function">按学号查询学生信息</span>
+    <form action="queryServlet" method="post">
+    <table align="center" style="border-collapse:separate; border-spacing:0px 10px;">
+        <tr>
+            <td>
+                <input type="hidden">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                要查询的学号<br/><input type="text" name="no" >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" id="btnSubmit" value="提交查询" class="tb" >
+            </td>
+        </tr>
+    </table>
+    </form>
+
+</div>
+
+<div id="bottom">
+		<span>
+			AsajuHuishi 2021
+		</span>
+</div>
+</body>
+</html>

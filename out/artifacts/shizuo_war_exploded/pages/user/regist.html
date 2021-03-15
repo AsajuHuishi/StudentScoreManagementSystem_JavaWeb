@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册页面</title>
+	<!--base标签永远固定相对路径-->
+	<base href="http://localhost:8080/shizuo/">
+	<link type="text/css" rel="stylesheet" href="static/css/style.css" >
+	<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+	//页面加载完成之后
+	//注册绑定单击事件
+	$(function(){
+		$(".errorMsg").hide();
+		$("#sub_btn").click(function(){
+			//用户名 字母数字下划线5-12位
+			//验证密码 字母数字下划线5-12
+			//确认密码和验证密码相同
+			//验证码输入
+
+			//1.用户名
+			//获取输入框内容
+			// alert($("#username").val());
+			var $username = $("#username").val();
+			//正则表达式
+			var usernamePatt = /^\w{5,12}$/;
+			if(!usernamePatt.test($username)){
+				//错误信息提示
+				$(".errorMsg").show();
+				return false;
+			}
+			//2.用户密码 和用户名一样
+			var $password = $("#password").val();
+			//正则表达式
+			var passwordPatt = /^\w{5,12}$/;
+			if(!passwordPatt.test($password)){
+				$(".errorMsg").text("密码不合法").show();
+				return false;
+			}
+			//3.确认密码 和密码相同
+			var $repwd = $("#repwd").val();
+			if($repwd != $password){
+				$(".errorMsg").text("密码不一致").show();
+				return false;
+			}
+			//4.邮箱
+			var email = $("#email").val();
+			var patt = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+
+			if(!patt.test(email)){
+				$(".errorMsg").text("邮箱不合法").show();
+				return false;
+			}
+			//5.验证码
+			//有内容就行
+			var code = $("#code").val();
+			//空值 空串 空格
+			//去掉验证码前后空格
+			code = $.trim(code);
+			// alert($.trim("  d  "));
+			if(code==null||code==""){
+				$(".errorMsg").text("验证码不能为空").show();
+				return false;
+			}
+
+		});
+
+
+
+	});
+</script>
+<style type="text/css">
+.login_form{
+	height:420px;
+	margin-top: 25px;
+}
+</style>
+
+</head>
+<body>
+<!--		<div id="login_header">-->
+<!--			<img class="logo_img" alt="" src="../../static/img/logo.gif" >-->
+<!--		</div>-->
+<div id="login_header">
+	<img class="logo_img" alt="" src="static/img/logo2.png" >
+</div>
+	<div class="login_banner">
+
+		<div id="l_content">
+			<span class="login_word">欢迎注册</span>
+		</div>
+
+		<div id="content">
+			<div class="login_form">
+				<div class="login_box">
+					<div class="tit">
+						<h1>注册会员</h1>
+						<span class="errorMsg">用户名不合法</span>
+					</div>
+					<div class="form">
+						<form action="registSevlet" method="post"><!--本地表单-->
+<!--								<form action="http://localhost:8080">&lt;!&ndash;本地表单&ndash;&gt;-->
+							<label>用户名称：</label>
+							<input class="itxt" type="text" placeholder="请输入用户名" autocomplete="off" tabindex="1" name="username" id="username" />
+							<br />
+							<br />
+							<label>用户密码：</label>
+							<input class="itxt" type="password" placeholder="请输入密码" autocomplete="off" tabindex="1" name="password" id="password" />
+							<br />
+							<br />
+							<label>确认密码：</label>
+							<input class="itxt" type="password" placeholder="确认密码" autocomplete="off" tabindex="1" name="repwd" id="repwd" />
+							<br />
+							<br />
+							<label>电子邮件：</label>
+							<input class="itxt" type="text" placeholder="请输入邮箱地址" autocomplete="off" tabindex="1" name="email" id="email" />
+							<br />
+							<br />
+							<label>验证码：</label>
+							<input class="itxt" type="text" style="width: 150px;" id="code" name="code"/>
+							<img alt="" src="static/img/code.bmp" style="float: right; margin-right: 40px">
+							<br />
+							<br />
+							<input type="submit" value="注册" id="sub_btn" />
+
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+<div id="bottom">
+	<span>
+		AsajuHuishi 2021
+	</span>
+</div>
+</body>
+</html>
