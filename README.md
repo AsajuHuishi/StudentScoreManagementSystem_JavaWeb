@@ -1,7 +1,7 @@
-@[TOC](JavaWeb+MySQL实现学生成绩管理系统1.0) 
+@[TOC](JavaWeb+MySQL实现学生成绩管理系统) 
 
 # 简介
-<font face="楷体" size="+1" color="#000033">本文基于**Java+MySQL+web**实现一个简单的学生成绩管理系统，实现B/S三层架构。它使用基础的`Servlet`和`JSP`实现Web层。它在Dao层使用`Druid`数据库连接池，使用`DBUtils`操作数据库。在功能上，相比前两个版本增加了**用户注册和登录功能**。
+<font face="楷体" size="+1" color="#000033">本文基于**JavaWeb+MySQL**实现一个简单的学生成绩管理系统，实现B/S三层架构。它使用基础的`Servlet`和`JSP`实现Web层。它在Dao层使用`Druid`数据库连接池，使用`DBUtils`操作数据库。在功能上，相比前两个版本增加了**用户注册和登录功能**。
 
 
 # 任务
